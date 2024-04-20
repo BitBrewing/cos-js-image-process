@@ -17,8 +17,7 @@
     "lint": "tsdx lint",
     "prepare": "npm run build",
     "size": "size-limit",
-    "analyze": "size-limit --why",
-    "publish": "npm publish --registry https://registry.npmjs.org"
+    "analyze": "size-limit --why"
   },
   "peerDependencies": {},
   "husky": {
