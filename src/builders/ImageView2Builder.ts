@@ -6,22 +6,35 @@ export class ImageView2Builder extends BuilderBase {
         super('imageView2');
     }
 
+    private readonly _thumbnai = (index: number, w?: number, h?: number) => {
+        this.appendArgs(index);
+
+        if (w) {
+            this.appendArgs('w').appendArgs(w);
+        }
+        if (h) {
+            this.appendArgs('h').appendArgs(h);
+        }
+
+        return this;
+    }
+
     /**
      * 限定缩略图的长边最多为&lt;LongEdge&gt;，短边最多为&lt;ShortEdge&gt;，进行等比缩放，不裁剪。如果只指定w参数则表示限定长边（短边自适应），只指定h参数则表示限定短边（长边自适应）
      * 
      * 当图片长宽相同时，默认长边为图片的高。
      */
-    thumbnai0 = (longEdge: number, shortEdge: number) => {
-        return this.appendArgs('0', `w/${longEdge}/h/${shortEdge}`);
+    thumbnai0 = (longEdge?: number, shortEdge?: number) => {
+        return this._thumbnai(0, longEdge, shortEdge);
     }
-    
+
     /**
      * 限定缩略图的宽高最小值。该操作会将图像等比缩放直至某一边达到设定最小值，之后将另一边居中裁剪至设定值。若只指定一边，则表示宽高相等的正方形。
      * 
      * 例如，原图大小为1000x500，将参数设定为?imageView2/1/w/500/h/400 后，图像会先等比缩放至800x400，之后左右各裁剪150，得到500x400大小的图像。
      */
-    thumbnai1 = (width: number, height: number) => {
-        return this.appendArgs('1', `w/${width}/h/${height}`);
+    thumbnai1 = (width?: number, height?: number) => {
+        return this._thumbnai(1, width, height);
     }
 
     /**
@@ -29,8 +42,8 @@ export class ImageView2Builder extends BuilderBase {
      * 
      * 例如，原图大小为 1000x500，将参数设定为?imageView2/2/w/500/h/400后，图像会等比缩放至500x250。如果只指定一边，则另一边自适应。
      */
-    thumbnai2 = (width: number, height: number) => {
-        return this.appendArgs('2', `w/${width}/h/${height}`);
+    thumbnai2 = (width?: number, height?: number) => {
+        return this._thumbnai(2, width, height);
     }
 
     /**
@@ -38,8 +51,8 @@ export class ImageView2Builder extends BuilderBase {
      * 
      * 例如，原图大小为 1000x500，将参数设定为?imageView2/3/w/500/h/400后，图像会等比缩放至800x400。如果只指定一边，则另一边设为相同值。
      */
-    thumbnai3 = (width: number, height: number) => {
-        return this.appendArgs('3', `w/${width}/h/${height}`);
+    thumbnai3 = (width?: number, height?: number) => {
+        return this._thumbnai(3, width, height);
     }
 
     /**
@@ -47,8 +60,8 @@ export class ImageView2Builder extends BuilderBase {
      * 
      * 当图片长宽相同时，默认长边为图片的高。
      */
-    thumbnai4 = (longEdge: number, shortEdge: number) => {
-        return this.appendArgs('4', `w/${longEdge}/h/${shortEdge}`);
+    thumbnai4 = (longEdge?: number, shortEdge?: number) => {
+        return this._thumbnai(4, longEdge, shortEdge);
     }
 
     /**
@@ -56,8 +69,8 @@ export class ImageView2Builder extends BuilderBase {
      * 
      * 当图片长宽相同时，默认长边为图片的高。
      */
-    thumbnai5 = (longEdge: number, shortEdge: number) => {
-        return this.appendArgs('5', `w/${longEdge}/h/${shortEdge}`);
+    thumbnai5 = (longEdge?: number, shortEdge?: number) => {
+        return this._thumbnai(5, longEdge, shortEdge);
     }
 
     /**
