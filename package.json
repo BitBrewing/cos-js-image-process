@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -49,6 +49,9 @@
       "limit": "10 KB"
     }
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^11.1.2",
     "husky": "^9.0.11",
